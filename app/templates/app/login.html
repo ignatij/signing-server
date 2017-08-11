@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Login page</title>
+    {% block styling %}
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'style.css' %}"> {% endblock styling %}
+</head>
+
+<body>
+    <div class="site-header">
+        <h2>Login</h2>
+    </div>
+    <hr/>
+    <div class="login-header">
+        <div class="login-outer-container">
+            {% block content %} {% if form.errors %}
+            <p style="color: white">Your username and password didn't match. Please try again.</p>
+            {% endif %} {% endblock %}
+            <div class="login-inner-container">
+                <form method="post" action="{% url 'app:login' %}">
+                    {% csrf_token %}
+                    <table class="table borderless">
+                        <tr>
+                            <td>{{ form.username.label_tag }}</td>
+                            <td class="login-input">{{ form.username }}</td>
+                        </tr>
+                        <tr>
+                            <td>{{ form.password.label_tag }}</td>
+                            <td class="login-input">{{ form.password }}</td>
+                        </tr>
+                    </table>
+                    <button type="submit" class="btn btn-warning">Login</button>
+                    <a class="btn btn-default" href="/register">Register</a>
+                </form>
+                <br/>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,113 @@
+.header {
+    background-color: #5f5f5f;
+    color: white;
+    padding: 20px 30px;
+}
+
+.header h3 {
+    margin-top: 0;
+    display: inline;
+    text-transform: uppercase;
+}
+
+.header a {
+    background-color: white;
+    color: #5f5f5f;
+    float: right;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.container h3 {
+    text-transform: uppercase;
+}
+
+.site-header {
+    padding-left: 30px;
+    text-transform: uppercase;
+}
+
+.site-header h2 {
+    font-weight: bold;
+}
+
+.login-outer-container {
+    text-align: left;
+}
+
+.login-inner-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 18px;
+}
+
+.btn {
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.login-inner-container button {
+
+    margin-left: 10px;
+    width: 30%;
+}
+
+.login-inner-container a {
+    background-color: white;
+    color: #5f5f5f;
+    text-transform: uppercase;
+    font-weight: bold;
+    width: 30%;
+}
+
+.borderless tbody tr td {
+    border: none;
+}
+
+
+.login-input {
+    color: black;
+    padding-left: 20px;
+}
+
+.login-outer-container {
+    width: 100%;
+    padding: 100px;
+    background-color: #5f5f5f;
+}
+
+.login-header {
+    padding: 50px 0px;
+}
+
+.register-outter-container {
+    padding-top: 40px;
+    text-align: center;
+}
+
+.register-inner-container {
+    background-color: #5f5f5f;
+    padding: 80px 0px;
+    display: table;
+    margin: 0 auto;
+    width: 100%;
+    font-size: 18px;
+}
+
+.register-inner-container form {
+    display: inline-block;
+    color: white;
+    text-align: left;
+}
+
+.register-inner-container form button {
+    width: 50%;
+}
+
+.register-inner-container form input {
+    display: block;
+    color: black;
+    margin-bottom: 10px;
+}

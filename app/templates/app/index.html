@@ -1,0 +1,13 @@
+<html>
+<head>
+<title>Welcome to signing server</title>
+</head>
+<body>
+	<form action="/" method="post">
+    	{% csrf_token %}
+    	{{ form }}
+    	<input type="submit" value="Submit" />
+	</form>
+	<button><a href="register">Sign up!</a></button>
+</body>
+</html>

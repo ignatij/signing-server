@@ -1,0 +1,87 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Home page</title>
+    {% block styling %}
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'style.css' %}"> {% endblock styling %}
+</head>
+
+<body>
+    <script type="text/javascript">
+    var verification_result = "{{ verify_message }}";
+    if (verification_result !== '') {
+        alert(verification_result);
+        window.location.href = "/"
+    }
+    </script>
+    <div class="header">
+        <h3>Welcome {{ user.username }}</h3>
+        <a class="btn btn-default" href="/logout">Logout</a>
+    </div>
+    <hr/>
+    <div class="container">
+        <h3>Sign or verify file</h3>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>File name</th>
+                    <th>Sign file</th>
+                    <th>Verify file</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for file in files %}
+                <tr>
+                    <div class="row">
+                        <div class="col-md-2">
+                            <th scope="row">
+                                {{file}}
+                            </th>
+                        </div>
+                        <td>
+                            <div class="col-md-5">
+                                <form method="post" action="{% url 'app:sign' %}">
+                                    {% csrf_token %}
+                                    <input type="hidden" value="{{file}}" name="sign_file_name">
+                                    <button type="submit" class="btn btn-primary">Sign</button>
+                                </form>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col-md-5">
+                                <form enctype="multipart/form-data" method="post" action="{% url 'app:index' %}"> {% csrf_token %}
+                                    <input type="hidden" value="{{file}}" name="verify_file_name">
+                                    <label class="btn btn-success">
+                                        Verify
+                                        <input type="file" name="file" style="display: none;" onchange="this.form.submit()" required>
+                                    </label>
+                                </form>
+                            </div>
+                        </td>
+                    </div>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        </form>
+    </div>
+    <br/>
+    <hr/>
+    <div class="container">
+        <h3>Upload a file</h3>
+        <form enctype="multipart/form-data" method="post" action="upload/">
+            {% csrf_token %}
+            <label class="btn btn-warning" for="upload_file">
+                Browse
+                <input id="upload_file" type="file" name="file" onchange="this.form.submit()" style="display: none;" required>
+            </label>
+        </form>
+    </div>
+    <br/>
+    <br/>
+</body>
+
+</html>
